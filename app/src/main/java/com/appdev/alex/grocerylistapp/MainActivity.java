@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         private EditText mEditTextName;
         private TextView mTextViewAmount;
         private int mAmount = 0;
-
         private SQLiteDatabase mDatabase;
-
 
 
     @Override
@@ -88,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sortItems();
+
             }
         });
 
@@ -130,7 +129,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void sortItems(){
-      
+
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + GroceryContract.GroceryEntry.TABLE_NAME + " ORDER BY " + GroceryContract.GroceryEntry.COLUMN_NAME , null);
+
+        mAdapter.swapCursor(cursor);
+
+        mAdapter.notifyDataSetChanged();
+
+        Toast.makeText(this, "Sorted alphabetically", Toast.LENGTH_SHORT).show();
     }
 
 }

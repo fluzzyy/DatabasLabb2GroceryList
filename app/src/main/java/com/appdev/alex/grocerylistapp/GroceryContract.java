@@ -15,6 +15,7 @@ public class GroceryContract  {
         public static final String COLUM_AMOUNT = "amount";
         public static final String COLUMN_TIMESTAMP = "timestamp";
 
+
     }
 
 }
